@@ -154,6 +154,15 @@ describe "PuppetRepl" do
     end
   end
 
+  describe 'print resources' do
+    let(:input) do
+      'resources'
+    end
+    it 'should be able to print resources' do
+      expect{repl.handle_input(input)}.to output(/main/).to_stdout
+    end
+  end
+
   describe 'set' do
     let(:input) do
       ":set loglevel debug"
