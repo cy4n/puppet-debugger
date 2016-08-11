@@ -37,7 +37,7 @@ describe "PuppetRepl" do
       it do
         repl.handle_input(input)
         expect(output.string).to eq("\n")
-        expect(repl.scope.known_resource_types.hostclasses).to include('testfoo')
+        expect(repl.known_resource_types[:hostclasses]).to include('testfoo')
       end
       it do
         repl.handle_input(input)
@@ -64,7 +64,7 @@ describe "PuppetRepl" do
       end
       it do
         repl.handle_input(input)
-        expect(repl.scope.known_resource_types.definitions.keys).to include('testfoo')
+        expect(repl.scope.environment.known_resource_types.definitions.keys).to include('testfoo')
         expect(output.string).to eq("\n")
       end
       it do
