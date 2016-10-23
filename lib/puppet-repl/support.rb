@@ -138,6 +138,7 @@ module PuppetRepl
     def puppet_eval(input)
       # in order to add functions to the scope the loaders must be created
       # in order to call native functions we need to set the global_scope
+      Puppet[:code] = input  # required for running breakpoint functions
       ast = generate_ast(input)
       Puppet.override( {:global_scope => scope, :loaders => scope.compiler.loaders } , 'For puppet-repl') do
          # because the repl is not a module we leave the modname blank
